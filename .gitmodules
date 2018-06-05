@@ -1,0 +1,6 @@
+[submodule "leshan"]
+	path = leshan
+	url = https://github.com/AnyLedger/leshan
+[submodule "anyledger-hub-web"]
+	path = anyledger-hub-web
+	url = https://github.com/AnyLedger/anyledger-hub-web
