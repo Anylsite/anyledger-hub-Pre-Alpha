@@ -1,3 +1,5 @@
 leshan/
 anyledger-hub-web/
 wait-for-it/
+.ipfs-docker-data/
+.ipfs-docker-staging/
