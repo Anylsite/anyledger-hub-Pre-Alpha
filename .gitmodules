@@ -6,4 +6,4 @@
 	url = https://github.com/AnyLedger/anyledger-hub-web
 [submodule "wait-for-it"]
 	path = wait-for-it
-	url = https://github.com/vishnubob/wait-for-it
+	url = https://github.com/AnyLedger/wait-for-it
