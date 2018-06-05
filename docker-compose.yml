@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  lwm2m-server:
+    build: ./leshan
+    ports: 
+      - 5683:5683/udp
+      - 5684:5684/udp
+      - 5783:5783/udp
+      - 5784:5784/udp
+      - 8081:8081
+  any-ledger-hub:
+    build: ./anyledger-hub-web
+    ports: 
+      - 3000:3000
