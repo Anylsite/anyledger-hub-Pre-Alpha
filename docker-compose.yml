@@ -1,15 +1,57 @@
 version: '3'
 
 services:
+  ipfs:
+    image: ipfs/go-ipfs
+    container_name: ipfs
+    expose:
+      - 4001
+      - 4002
+      - 5001
+      - 8080
+    ports:
+      - 4001:4001
+      - 4002:4002/udp
+      - 5001:5001
+      - 8080:8080
+    volumes:
+      - .ipfs-docker-data:/data/ipfs/
+      - .ipfs-docker-staging:/export
+    networks:
+      - internal
+  
   lwm2m-server:
+    container_name: lwm2m-server
+    depends_on:
+      - ipfs
     build: ./leshan
+    expose:
+      - 5683
+      - 5684
+      - 5783
+      - 5784
+      - 8081
     ports: 
       - 5683:5683/udp
       - 5684:5684/udp
       - 5783:5783/udp
       - 5784:5784/udp
       - 8081:8081
+    networks:
+      - internal
+  
   any-ledger-hub:
+    container_name: any-ledger-hub
     build: ./anyledger-hub-web
+    depends_on:
+      - lwm2m-server
+    expose:
+      - 3000
     ports: 
       - 3000:3000
+    networks:
+      - internal
+
+networks:
+  internal:
+    driver: bridge
