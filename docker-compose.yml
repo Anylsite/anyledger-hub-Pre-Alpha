@@ -1,4 +1,4 @@
-version: '3'
+version: '3.5'
 
 services:
   ipfs:
@@ -18,14 +18,16 @@ services:
       - .ipfs-docker-data:/data/ipfs/
       - .ipfs-docker-staging:/export
     networks:
-      - internal
+      - anyledger-net
   
   lwm2m-server:
     container_name: lwm2m-server
+    restart: on-failure
     depends_on:
       - ipfs
     build: ./leshan
     expose:
+      - 5001
       - 5683
       - 5684
       - 5783
@@ -38,7 +40,7 @@ services:
       - 5784:5784/udp
       - 8081:8081
     networks:
-      - internal
+      - anyledger-net
   
   any-ledger-hub:
     container_name: any-ledger-hub
@@ -50,8 +52,8 @@ services:
     ports: 
       - 3000:3000
     networks:
-      - internal
+      - anyledger-net
 
 networks:
-  internal:
+  anyledger-net:
     driver: bridge
