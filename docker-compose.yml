@@ -13,13 +13,13 @@ services:
       - 4001:4001
       - 4002:4002/udp
       - 5001:5001
-      - 8080:8080
+      - 127.0.0.1:8080:8080
     volumes:
       - .ipfs-docker-data:/data/ipfs/
       - .ipfs-docker-staging:/export
     networks:
       - anyledger-net
-  
+
   lwm2m-server:
     container_name: lwm2m-server
     restart: on-failure
@@ -38,7 +38,7 @@ services:
       - 5684:5684/udp
       - 5783:5783/udp
       - 5784:5784/udp
-      - 8081:8081
+      - 127.0.0.1:8081:8081
     networks:
       - anyledger-net
   
@@ -51,6 +51,19 @@ services:
       - 3000
     ports: 
       - 3000:3000
+    networks:
+      - anyledger-net
+
+  lwm2m-client:
+    container_name: lwm2m-client
+    restart: on-failure
+    depends_on:
+      - lwm2m-server
+    build: ./leshan/leshan-client-demo
+    expose:
+      - 6001
+    ports: 
+      - 6001:6001/udp
     networks:
       - anyledger-net
 
