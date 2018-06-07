@@ -4,3 +4,6 @@
 [submodule "anyledger-hub-web"]
 	path = anyledger-hub-web
 	url = https://github.com/AnyLedger/anyledger-hub-web
+[submodule "ethereum-private-network"]
+	path = ethereum-private-network
+	url = https://github.com/AnyLedger/ethereum-private-network

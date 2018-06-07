@@ -1,6 +1,7 @@
 version: '3.5'
 
 services:
+  
   ipfs:
     image: ipfs/go-ipfs
     container_name: ipfs
@@ -38,7 +39,19 @@ services:
       - 5684:5684/udp
       - 5783:5783/udp
       - 5784:5784/udp
-      - 127.0.0.1:8081:8081
+      - 8081:8081
+    networks:
+      - anyledger-net
+
+  ethereum-node:
+    container_name: eth-node
+    build: ./ethereum-private-network
+    networks:
+      - anyledger-net
+
+  ethereum-miner:
+    container_name: eth-miner
+    build: ./ethereum-private-network
     networks:
       - anyledger-net
   
