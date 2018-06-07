@@ -7,3 +7,6 @@
 [submodule "ethereum-private-network"]
 	path = ethereum-private-network
 	url = https://github.com/AnyLedger/ethereum-private-network
+[submodule "smart-contracts"]
+	path = smart-contracts
+	url = https://github.com/AnyLedger/smart-contracts
