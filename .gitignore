@@ -1,5 +1,7 @@
 leshan/
 anyledger-hub-web/
-wait-for-it/
+smart-contracts/
+ethereum-private-network/
+
 .ipfs-docker-data/
 .ipfs-docker-staging/
