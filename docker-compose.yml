@@ -43,15 +43,14 @@ services:
     networks:
       - anyledger-net
 
-  ethereum-node:
-    container_name: eth-node
-    build: ./ethereum-private-network
-    networks:
-      - anyledger-net
-
-  ethereum-miner:
-    container_name: eth-miner
-    build: ./ethereum-private-network
+  ganache-cli:
+    container_name: ganache-cli
+    image: trufflesuite/ganache-cli:latest
+    command: ["-a", "1", "-d", "-p", "8545", "-m", "myth ike bonus scarblem client lizard pioneer submit female collect"]
+    expose:
+      - 8545
+    ports: 
+      - 8545:8545
     networks:
       - anyledger-net
   
@@ -64,6 +63,14 @@ services:
       - 3000
     ports: 
       - 3000:3000
+    networks:
+      - anyledger-net
+
+  truffle:
+    container_name: truffle
+    build: ./smart-contracts/ethereum
+    depends_on:
+      - ganache-cli
     networks:
       - anyledger-net
 
