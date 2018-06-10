@@ -50,7 +50,7 @@ services:
     expose:
       - 8545
     ports: 
-      - 8545:8545
+      - 127.0.0.1:8545:8545
     networks:
       - anyledger-net
   
