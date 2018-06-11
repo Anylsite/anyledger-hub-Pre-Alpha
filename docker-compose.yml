@@ -5,16 +5,6 @@ services:
   ipfs:
     image: ipfs/go-ipfs
     container_name: ipfs
-    expose:
-      - 4001
-      - 4002
-      - 5001
-      - 8080
-    ports:
-      - 4001:4001
-      - 4002:4002/udp
-      - 5001:5001
-      - 127.0.0.1:8080:8080
     volumes:
       - .ipfs-docker-data:/data/ipfs/
       - .ipfs-docker-staging:/export
@@ -40,6 +30,9 @@ services:
       - 5783:5783/udp
       - 5784:5784/udp
       - 8081:8081
+    links:
+      - ipfs
+      - ganache-cli
     networks:
       - anyledger-net
 
@@ -54,15 +47,19 @@ services:
     networks:
       - anyledger-net
   
-  any-ledger-hub:
-    container_name: any-ledger-hub
+  anyledger-hub:
+    container_name: anyledger-hub
     build: ./anyledger-hub-web
-    depends_on:
-      - lwm2m-server
     expose:
-      - 3000
-    ports: 
-      - 3000:3000
+      - 4001
+      - 4002
+      - 5001
+      - 8080
+    ports:
+      - 4001:4001
+      - 4002:4002/udp
+      - 5001:5001
+      - 8080:8080
     networks:
       - anyledger-net
 
@@ -70,6 +67,8 @@ services:
     container_name: truffle
     build: ./smart-contracts/ethereum
     depends_on:
+      - ganache-cli
+    links:
       - ganache-cli
     networks:
       - anyledger-net
@@ -84,6 +83,8 @@ services:
       - 6001
     ports: 
       - 6001:6001/udp
+    links:
+      - lwm2m-server
     networks:
       - anyledger-net
 
