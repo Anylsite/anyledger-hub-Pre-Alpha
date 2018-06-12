@@ -10,3 +10,6 @@
 [submodule "smart-contracts"]
 	path = smart-contracts
 	url = https://github.com/AnyLedger/smart-contracts
+[submodule "decentralized-storage"]
+	path = decentralized-storage
+	url = https://github.com/AnyLedger/decentralized-storage

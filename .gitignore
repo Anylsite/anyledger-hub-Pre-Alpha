@@ -2,6 +2,7 @@ leshan/
 anyledger-hub-web/
 smart-contracts/
 ethereum-private-network/
+decentralized-storage/
 
 .ipfs-docker-data/
 .ipfs-docker-staging/

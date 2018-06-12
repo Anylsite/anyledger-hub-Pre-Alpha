@@ -3,11 +3,12 @@ version: '3.5'
 services:
   
   ipfs:
-    image: ipfs/go-ipfs
     container_name: ipfs
-    volumes:
-      - .ipfs-docker-data:/data/ipfs/
-      - .ipfs-docker-staging:/export
+    build: ./decentralized-storage
+    expose:
+      - 5001
+    ports: 
+      - 5001:5001
     networks:
       - anyledger-net
 
@@ -53,12 +54,10 @@ services:
     expose:
       - 4001
       - 4002
-      - 5001
       - 8080
     ports:
       - 4001:4001
       - 4002:4002/udp
-      - 5001:5001
       - 8080:8080
     networks:
       - anyledger-net
