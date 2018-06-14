@@ -72,16 +72,34 @@ services:
     networks:
       - anyledger-net
 
-  lwm2m-client:
-    container_name: lwm2m-client
+  lwm2m-client_1:
+    container_name: lwm2m-client_1
     restart: on-failure
     depends_on:
       - lwm2m-server
     build: ./leshan/leshan-client-demo
-    expose:
-      - 6001
-    ports: 
-      - 6001:6001/udp
+    links:
+      - lwm2m-server
+    networks:
+      - anyledger-net
+
+  lwm2m-client_2:
+    container_name: lwm2m-client_2
+    restart: on-failure
+    depends_on:
+      - lwm2m-server
+    build: ./leshan/leshan-client-demo
+    links:
+      - lwm2m-server
+    networks:
+      - anyledger-net
+
+  lwm2m-client_3:
+    container_name: lwm2m-client_3
+    restart: on-failure
+    depends_on:
+      - lwm2m-server
+    build: ./leshan/leshan-client-demo
     links:
       - lwm2m-server
     networks:
