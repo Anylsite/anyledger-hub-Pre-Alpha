@@ -2,8 +2,8 @@ version: '3.5'
 
 services:
   
-  ipfs:
-    container_name: ipfs
+  ipfs-ethereum:
+    container_name: ipfs-ethereum
     build: ./../../decentralized-storage
     expose:
       - 5001
@@ -12,11 +12,11 @@ services:
     networks:
       - anyledger-net
 
-  lwm2m-server:
-    container_name: lwm2m-server
+  lwm2m-server-ethereum:
+    container_name: lwm2m-server-ethereum
     restart: on-failure
     depends_on:
-      - ipfs
+      - ipfs-ethereum
     build: ./../../leshan/leshan-server-cluster-ipfs
     expose:
       - 5001
@@ -25,14 +25,8 @@ services:
       - 5783
       - 5784
       - 8081
-    ports: 
-      - 5683:5683/udp
-      - 5684:5684/udp
-      - 5783:5783/udp
-      - 5784:5784/udp
-      - 8081:8081
     links:
-      - ipfs
+      - ipfs-ethereum
       - ganache-cli
     networks:
       - anyledger-net
@@ -48,8 +42,8 @@ services:
     networks:
       - anyledger-net
   
-  anyledger-hub:
-    container_name: anyledger-hub
+  anyledger-hub-ethereum:
+    container_name: anyledger-hub-ethereum
     build: ./../../anyledger-hub-web
     expose:
       - 4001
@@ -72,39 +66,39 @@ services:
     networks:
       - anyledger-net
 
-  lwm2m-client_1:
-    container_name: lwm2m-client_1
+  lwm2m-client_1-ethereum:
+    container_name: lwm2m-client_1-ethereum
     restart: on-failure
     depends_on:
-      - lwm2m-server
+      - lwm2m-server-ethereum
       - truffle
     build: ./../../leshan/leshan-client-demo
     links:
-      - lwm2m-server
+      - lwm2m-server-ethereum
     networks:
       - anyledger-net
 
-  lwm2m-client_2:
-    container_name: lwm2m-client_2
+  lwm2m-client_2-ethereum:
+    container_name: lwm2m-client_2-ethereum
     restart: on-failure
     depends_on:
-      - lwm2m-server
+      - lwm2m-server-ethereum
       - truffle
     build: ./../../leshan/leshan-client-demo
     links:
-      - lwm2m-server
+      - lwm2m-server-ethereum
     networks:
       - anyledger-net
 
-  lwm2m-client_3:
-    container_name: lwm2m-client_3
+  lwm2m-client_3-ethereum:
+    container_name: lwm2m-client_3-ethereum
     restart: on-failure
     depends_on:
-      - lwm2m-server
+      - lwm2m-server-ethereum
       - truffle
     build: ./../../leshan/leshan-client-demo
     links:
-      - lwm2m-server
+      - lwm2m-server-ethereum
     networks:
       - anyledger-net
 
