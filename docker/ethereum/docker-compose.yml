@@ -4,7 +4,7 @@ services:
   
   ipfs:
     container_name: ipfs
-    build: ./decentralized-storage
+    build: ./../../decentralized-storage
     expose:
       - 5001
     ports: 
@@ -17,7 +17,7 @@ services:
     restart: on-failure
     depends_on:
       - ipfs
-    build: ./leshan/leshan-server-cluster-ipfs
+    build: ./../../leshan/leshan-server-cluster-ipfs
     expose:
       - 5001
       - 5683
@@ -50,7 +50,7 @@ services:
   
   anyledger-hub:
     container_name: anyledger-hub
-    build: ./anyledger-hub-web
+    build: ./../../anyledger-hub-web
     expose:
       - 4001
       - 4002
@@ -64,7 +64,7 @@ services:
 
   truffle:
     container_name: truffle
-    build: ./smart-contracts/ethereum
+    build: ./../../smart-contracts/ethereum
     depends_on:
       - ganache-cli
     links:
@@ -78,7 +78,7 @@ services:
     depends_on:
       - lwm2m-server
       - truffle
-    build: ./leshan/leshan-client-demo
+    build: ./../../leshan/leshan-client-demo
     links:
       - lwm2m-server
     networks:
@@ -90,7 +90,7 @@ services:
     depends_on:
       - lwm2m-server
       - truffle
-    build: ./leshan/leshan-client-demo
+    build: ./../../leshan/leshan-client-demo
     links:
       - lwm2m-server
     networks:
@@ -102,7 +102,7 @@ services:
     depends_on:
       - lwm2m-server
       - truffle
-    build: ./leshan/leshan-client-demo
+    build: ./../../leshan/leshan-client-demo
     links:
       - lwm2m-server
     networks:

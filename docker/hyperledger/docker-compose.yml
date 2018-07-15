@@ -1,0 +1,94 @@
+version: '3.5'
+
+services:
+
+  validating-peer:
+    image: hyperledger/fabric-peer
+    environment:
+      - CORE_PEER_ID=fabric-peer
+      - CORE_PEER_ADDRESSAUTODETECT=true
+      - CORE_VM_ENDPOINT=http://127.0.0.1:2375
+      - CORE_LOGGING_LEVEL=DEBUG
+    command: peer node start
+    networks:
+      - anyledger-net
+  
+  ipfs-hyperledger:
+    container_name: ipfs-hyperledger
+    build: ./../../decentralized-storage
+    expose:
+      - 5001
+    ports: 
+      - 5001:5001
+    networks:
+      - anyledger-net
+
+  lwm2m-server-hyperledger:
+    container_name: lwm2m-server-hyperledger
+    restart: on-failure
+    depends_on:
+      - ipfs-hyperledger
+    build: ./../../leshan/leshan-server-cluster-ipfs
+    expose:
+      - 5001
+      - 5683
+      - 5684
+      - 5783
+      - 5784
+      - 8081
+    links:
+      - ipfs-hyperledger
+      - fabric-peer
+    networks:
+      - anyledger-net
+
+  anyledger-hub-hyperledger:
+    container_name: anyledger-hub-hyperledger
+    build: ./../../anyledger-hub-web
+    expose:
+      - 4001
+      - 4002
+      - 8080
+    ports:
+      - 4001:4001
+      - 4002:4002/udp
+      - 8080:8080
+    networks:
+      - anyledger-net
+
+  lwm2m-client_1-hyperledger:
+    container_name: lwm2m-client_1-hyperledger
+    restart: on-failure
+    depends_on:
+      - lwm2m-server-hyperledger
+    build: ./../../leshan/leshan-client-demo
+    links:
+      - lwm2m-server-hyperledger
+    networks:
+      - anyledger-net
+
+  lwm2m-client_2-hyperledger:
+    container_name: lwm2m-client_2-hyperledger
+    restart: on-failure
+    depends_on:
+      - lwm2m-server-hyperledger
+    build: ./../../leshan/leshan-client-demo
+    links:
+      - lwm2m-server-hyperledger
+    networks:
+      - anyledger-net
+
+  lwm2m-client_3-hyperledger:
+    container_name: lwm2m-client_3-hyperledger
+    restart: on-failure
+    depends_on:
+      - lwm2m-server-hyperledger
+    build: ./../../leshan/leshan-client-demo
+    links:
+      - lwm2m-server-hyperledger
+    networks:
+      - anyledger-net
+
+networks:
+  anyledger-net:
+    driver: bridge
