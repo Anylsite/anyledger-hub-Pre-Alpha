@@ -21,26 +21,35 @@ This repo has two purposes:
 ## Prerequisites
 
 1. Install latest Java Development Kit
-  * On Linux: `sudo apt install maven`
-  
-  * On MacOS: 
+  * On Linux: `sudo apt-get install openjdk-8-jdk`
 
-  * On Windows: 
+  * On MacOS: http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
+
+  * On Windows:
 
 2. Install Maven
   * On Linux: `sudo apt install maven`
-  
-  * On MacOS: 
 
-  * On Windows: 
+  * On MacOS: `brew install maven`
+
+  * On Windows:
 
 3. Install Docker and Docker Compose
 
   * On Linux: `sudo apt install docker.io` and then `sudo apt install docker-compose`
 
-  * On MacOS: 
+  * On MacOS: `brew install docker docker-compose docker-machine xhyve docker-machine-driver-xhyve`
 
-  * On Windows: 
+  (some of these steps will require your Mac password)
+ `sudo chown root:wheel  $(brew--prefix)/opt/docker-machine-driver-xhyve/bin/docker-machine-driver-xhyve`
+
+  `sudo chmod u+s $(brew --prefix)/opt/docker-machine-driver-xhyve/bin/docker-machine-driver-xhyve`
+
+  `docker-machine create default --driver xhyve --xhyve-experimental-nfs-share`
+
+  `eval $(docker-machine env default)`
+
+  * On Windows:
 
 
 ## Installation
@@ -54,5 +63,28 @@ This repo has two purposes:
 4. Run Docker Compose in the root of the repo: `docker-compose up`
 
 
+## Troubleshooting
 
+-In step 3, you should input `eval $(docker-machine env default)` after
+
+`ERROR: Couldn't connect to Docker daemon - you might need to run `docker-machine start default`.`
+
+
+- In step 3 of Installation, you may be encounter an error due to having a different installed version for openjdk. For instance:
+
+`apk add --no-cache openjdk8=8.151.12-r0
+...
+ERROR: unsatisfiable constraints:
+...
+ERROR: Service 'lwm2m-client_1' failed to build:
+...`
+
+To solve it, replace the old version in the project with the new one.
+
+
+-latest version of trufflesuite/ganache-cli may give errors in truffle like:
+
+`Error: Invalid JSON RPC response: ""`
+
+Use v6.1.0 instead.
 

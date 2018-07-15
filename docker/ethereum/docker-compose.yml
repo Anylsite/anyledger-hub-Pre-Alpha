@@ -1,13 +1,13 @@
 version: '3.5'
 
 services:
-  
+
   ipfs-ethereum:
     container_name: ipfs-ethereum
     build: ./../../decentralized-storage
     expose:
       - 5001
-    ports: 
+    ports:
       - 5001:5001
     networks:
       - anyledger-net
@@ -32,16 +32,16 @@ services:
       - anyledger-net
 
   ganache-cli:
-    container_name: ganache-cli
-    image: trufflesuite/ganache-cli:latest
+    container_name: ganache-cli_container
+    image: trufflesuite/ganache-cli:v6.1.0
     command: ["-d", "-p", "8545", "--account", "0x76dda3572973659eabbd6c9279b66256838038da8189ee689e174e7acabfe3c5,1000000000000000000000000"]
     expose:
       - 8545
-    ports: 
+    ports:
       - 127.0.0.1:8545:8545
     networks:
       - anyledger-net
-  
+
   anyledger-hub-ethereum:
     container_name: anyledger-hub-ethereum
     build: ./../../anyledger-hub-web
@@ -57,7 +57,7 @@ services:
       - anyledger-net
 
   truffle:
-    container_name: truffle
+    container_name: truffle_container
     build: ./../../smart-contracts/ethereum
     depends_on:
       - ganache-cli
