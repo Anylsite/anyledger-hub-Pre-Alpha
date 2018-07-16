@@ -32,7 +32,7 @@ services:
       - anyledger-net
 
   ganache-cli:
-    container_name: ganache-cli_container
+    container_name: ganache-cli
     image: trufflesuite/ganache-cli:v6.1.0
     command: ["-d", "-p", "8545", "--account", "0x76dda3572973659eabbd6c9279b66256838038da8189ee689e174e7acabfe3c5,1000000000000000000000000"]
     expose:
@@ -57,7 +57,7 @@ services:
       - anyledger-net
 
   truffle:
-    container_name: truffle_container
+    container_name: truffle
     build: ./../../smart-contracts/ethereum
     depends_on:
       - ganache-cli

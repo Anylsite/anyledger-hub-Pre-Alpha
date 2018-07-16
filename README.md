@@ -41,6 +41,7 @@ This repo has two purposes:
   * On MacOS: `brew install docker docker-compose docker-machine xhyve docker-machine-driver-xhyve`
 
   (some of these steps will require your Mac password)
+  
  `sudo chown root:wheel  $(brew--prefix)/opt/docker-machine-driver-xhyve/bin/docker-machine-driver-xhyve`
 
   `sudo chmod u+s $(brew --prefix)/opt/docker-machine-driver-xhyve/bin/docker-machine-driver-xhyve`
@@ -74,8 +75,10 @@ This repo has two purposes:
 
 `apk add --no-cache openjdk8=8.151.12-r0
 ...
+
 ERROR: unsatisfiable constraints:
 ...
+
 ERROR: Service 'lwm2m-client_1' failed to build:
 ...`
 
