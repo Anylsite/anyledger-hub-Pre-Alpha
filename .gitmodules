@@ -13,3 +13,6 @@
 [submodule "decentralized-storage"]
 	path = decentralized-storage
 	url = https://github.com/AnyLedger/decentralized-storage
+[submodule "fabric-samples"]
+	path = fabric-samples
+	url = https://github.com/AnyLedger/fabric-samples
