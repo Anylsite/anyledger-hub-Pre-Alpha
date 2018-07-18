@@ -38,17 +38,7 @@ This repo has two purposes:
 
   * On Linux: `sudo apt install docker.io` and then `sudo apt install docker-compose`
 
-  * On MacOS: `brew install docker docker-compose docker-machine xhyve docker-machine-driver-xhyve`
-
-  (some of these steps will require your Mac password)
-  
- `sudo chown root:wheel  $(brew--prefix)/opt/docker-machine-driver-xhyve/bin/docker-machine-driver-xhyve`
-
-  `sudo chmod u+s $(brew --prefix)/opt/docker-machine-driver-xhyve/bin/docker-machine-driver-xhyve`
-
-  `docker-machine create default --driver xhyve --xhyve-experimental-nfs-share`
-
-  `eval $(docker-machine env default)`
+  * On MacOS: Install from https://www.docker.com/docker-mac
 
   * On Windows:
 
