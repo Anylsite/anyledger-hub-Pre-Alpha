@@ -66,6 +66,8 @@ This repo has two purposes:
 
 ## Troubleshooting
 
+-In step 2, the leshan build can sometimes fail. Don't panic and try again :) 
+
 -In step 3, you should input `eval $(docker-machine env default)` after
 
 `ERROR: Couldn't connect to Docker daemon - you might need to run `docker-machine start default`.`
