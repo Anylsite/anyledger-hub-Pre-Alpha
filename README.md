@@ -59,7 +59,7 @@ This repo has two purposes:
 
 2. Go to `/anyledger-hub/leshan/` and build the project with `mvn package`
 
-3. Build Docker images: `docker-compose build`
+3. Build Docker images by going to the folder containing `docker-compose.yml` and type `docker-compose build`
 
 4. Run Docker Compose in the root of the repo: `docker-compose up`
 
@@ -70,8 +70,9 @@ This repo has two purposes:
 
 -In step 3, you should input `eval $(docker-machine env default)` after
 
-`ERROR: Couldn't connect to Docker daemon - you might need to run `docker-machine start default`.`
+`ERROR: Couldn't connect to Docker daemon - you might need to run docker-machine start default.`
 
+if the machine is already running.
 
 - In step 3 of Installation, you may be encounter an error due to having a different installed version for openjdk. For instance:
 
@@ -81,8 +82,7 @@ This repo has two purposes:
 ERROR: unsatisfiable constraints:
 ...
 
-ERROR: Service 'lwm2m-client_1' failed to build:
-...`
+ERROR: Service 'lwm2m-client_1' failed to build:...`
 
 To solve it, replace the old version in the project with the new one.
 
