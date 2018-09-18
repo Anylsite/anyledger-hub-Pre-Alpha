@@ -53,6 +53,13 @@ This repo has two purposes:
 
 4. Run Docker Compose in the root of the repo: `docker-compose up`
 
+The web app is hosted on IPFS. To visualize it, go to:
+
+`http://0.0.0.0:8080/ipfs/QmSoQUcGK4zQ78zrqP5DskDNnJ9x3M7cwS5rz7v4WhPRQZ/`
+
+but replacing this dummy hash with hash of the index.html file, which can be found after running `docker-compose up`.
+
+
 
 ## Troubleshooting
 
