@@ -2,7 +2,7 @@
 
 ## Overview
 
-AnyLedger Hub is the bridge connecting the IoT device featuring the [embedded wallet](https://github.com/AnyLedger/anyledger-wallet) and a given blockchain. It consist of a series of moving pieces like the LWM2M server to remotely manage the devices (device lifecycle management, over-the-air updates, etc.), the blockchain nodes and decentralised storage solutions. It also feature a set of standard smart contracts implementing features like digital twin, decentralised access control, multisignature contracts, etc. 
+AnyLedger Hub is the bridge connecting the IoT device featuring the [embedded wallet](https://github.com/AnyLedger/anyledger-wallet) and a given blockchain. It consist of a series of moving pieces like the LWM2M server to remotely manage the devices (device lifecycle management, over-the-air updates, etc.), the blockchain nodes and decentralised storage solutions. It also includes a set of standard smart contracts implementing features like digital twin, decentralised access control, multisignature contracts, etc. 
 
 What is inside the current repo:
 
