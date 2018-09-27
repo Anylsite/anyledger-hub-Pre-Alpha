@@ -60,6 +60,10 @@ The web app is hosted on IPFS. To visualize it, go to:
 but replacing this dummy hash with hash of the index.html file, which can be found after running `docker-compose up`.
 
 
+## Tips
+
+To update all the submodules:  `git submodule update --remote --recursive`
+
 
 ## Troubleshooting
 
