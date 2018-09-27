@@ -2,19 +2,21 @@
 
 ## Overview
 
-This repo has two purposes:
+AnyLedger Hub is the bridge connecting the IoT device featuring the [embedded wallet](https://github.com/AnyLedger/anyledger-wallet) and a given blockchain. It consist of a series of moving pieces like the LWM2M server to remotely manage the devices (device lifecycle management, over-the-air updates, etc.), the blockchain nodes and decentralised storage solutions. It also feature a set of standard smart contracts implementing features like digital twin, decentralised access control, multisignature contracts, etc. 
+
+What is inside the current repo:
 
 1. It is an umbrella repo for the following submodules:
 
   * **anyledger-hub-web** - AnyLedger Hub static HTML/JavaScript web page served by the IPFS
 
-  * **decentralized-storage** - IPFS node responsible for hosting static static HTML/JavaScript web pages for AnyLedger Hub
-
+  * **decentralized-storage** - IPFS node responsible for hosting data in decentralised fashion. Can be used for instance to store IoT data, HTML/JavaScript web pages, object graphs and more.
+  
   * **ethereum-private-network** - Private Ethereum full node. Currently not used.
 
   * **leshan** - LWM2M (Lightweight Machine 2 Machine) Server which is storing its object graph on IPFS and Ethereum
 
-  * **smart-contracts** - Ethereum (for now) Smart Contracts which are used for Digital Twin Root of Trust, Access Control, etc.
+  * **smart-contracts** - Ethereum and HyperLedger Smart Contracts which are used for Digital Twin Root of Trust, Access Control, etc.
 
 2. This repo also contains Docker Composer file which spins the whole platform on a single machine. It is meant to be used for development and demo purposes.
 
