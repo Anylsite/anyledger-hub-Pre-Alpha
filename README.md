@@ -20,6 +20,18 @@ What is inside the current repo:
 
 2. This repo also contains Docker Composer file which spins the whole platform on a single machine. It is meant to be used for development and demo purposes.
 
+
+## Example Features
+
+####Decentralised Access Control
+
+The device owner can be interested in setting an access control policy for the remote access of the device. This can be achieved in a decentralized fashion, that is relying on private keys authentication and without the need of a central server, by storing the access control policy on a [smart contract](https://github.com/AnyLedger/smart-contracts/blob/master/ethereum/contracts/AccessControlManager.sol). 
+
+####Decentralised Lifecycle Management
+
+A way to achieve this with AnyLedger Hub is the following: the devices registered on Leshan are stored on IPFS together with their metadata. Moreover, thanks to another [smart contract](https://github.com/AnyLedger/smart-contracts/blob/master/ethereum/contracts/DeviceManager.sol), every device id is associated to the respective IPFS hash. Every additional update of the device status can be included on IPFS by storing the previous hash together with the new metadata, therefore creating an immutable history of the device lifecycle.
+
+
 ## Prerequisites
 
 1. Install latest Java Development Kit
